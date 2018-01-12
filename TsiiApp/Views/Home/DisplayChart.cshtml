@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="info" style="display:block;">Loading data from Model.ChartName</div>
+<div id="info" style="display:block;">Loading data from @Model.ChartName</div>
 <div id="nav" style="height: 100px; display: none;">
 	<div>Use fields below to select attributes</div>
 	<div id="fields">
@@ -29,7 +29,7 @@
 			</select>
 		</div>
 		<div class="field">
-			<input type="button" value="Display" onClick="showGraph('"+Model.ChartName+"');"/>
+			<input type="button" value="Display" onClick="showGraph('@Model.ChartName');"/>
 		</div>
 	</div>
 </div>
@@ -38,6 +38,6 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", function(e){
-		//Chart.loadData(Model.ChartName, ...);
+		Chart.loadData('@Model.ChartName', '@Url.Action("GetChartDataAsJson", "Chart", new { fileName = "@Model.ChartName" })');
 	});
 </script>
