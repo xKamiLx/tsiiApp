@@ -1,8 +1,43 @@
-﻿
+﻿@model TsiiApp.ViewModels.ChartViewModel
 @{
     ViewBag.Title = "DisplayChart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>DisplayChart</h2>
+<div id="info" style="display:block;">Loading data from Model.ChartName</div>
+<div id="nav" style="height: 100px; display: none;">
+	<div>Use fields below to select attributes</div>
+	<div id="fields">
+		<div class="field">
+			<select id="classAttr">
+				<option selected="true">Select class attribute</option>
+			</select>
+		</div>
+		<div class="field">
+			<select id="labelX">
+				<option selected="true">Select column</option>
+			</select>
+		</div>
+		<div class="field">
+			<select id="labelY">
+				<option selected="true">Select column</option>
+			</select>
+		</div>
+		<div class="field">
+			<select id="labelZ">
+				<option selected="true">Select column</option>
+			</select>
+		</div>
+		<div class="field">
+			<input type="button" value="Display" onClick="showGraph('"+Model.ChartName+"');"/>
+		</div>
+	</div>
+</div>
 
+<div id="plot"></div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(e){
+		//Chart.loadData(Model.ChartName, ...);
+	});
+</script>

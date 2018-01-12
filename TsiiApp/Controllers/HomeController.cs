@@ -3,6 +3,7 @@ using System.IO;
 using System.Web.Mvc;
 using System.Linq;
 using TsiiApp.ViewModels;
+using TsiiApp.Services;
 
 namespace TsiiApp.Controllers
 {
@@ -10,14 +11,12 @@ namespace TsiiApp.Controllers
 	{
 		public ActionResult Index()
 		{
-			string pathToChartsFolder = AppDomain.CurrentDomain.BaseDirectory+"Charts\\";
-			var filenames = Directory.GetFiles(pathToChartsFolder, "*.*").Select(Path.GetFileNameWithoutExtension).ToList();
-			var homeViewModel = new HomeViewModel
-			{
-				Filenames = filenames
-			};
-
+			
+			var service = new ChartService();
+			var homeViewModel = service.GetChartsFileNames();
+			
 			return View(homeViewModel);
+			
 		}
 
 		[HttpGet]
@@ -26,10 +25,5 @@ namespace TsiiApp.Controllers
 			return View();
 		}
 
-		[HttpGet]
-		public ActionResult DisplayChart(string filename)
-		{
-			return View();
-		}
 	}
 }
