@@ -12,7 +12,7 @@ namespace TsiiApp.Services
 		/**
 		 * Get json from chart data
 		 */
-		public async String ChartDataToJson(List<List<String>> data, boolean hasFileLabels){
+		public String ChartDataToJson(List<List<String>> data, boolean hasFileLabels){
 			
 			int pos = 0;
 			int nrOfColumns = data[0].Count;
@@ -63,9 +63,8 @@ namespace TsiiApp.Services
 		/**
 		 * Get chart data from specified file
 		 */
-		public async List<List<String>> GetChartDataFromFile(String fileName, char getFileSeparator){
+		public List<List<String>> GetChartDataFromFile(String fileName, char getFileSeparator){
 			
-			String data = null;
 			String pathToFile = GetPathToChartFolder() + fileName;
 			List<List<String>> data = new List<List<String>>();
 			
@@ -73,15 +72,17 @@ namespace TsiiApp.Services
 				
 				using(StreamReader reader = new StreamReader(pathToFile)){
 					
-					String line = await reader.ReadToEndAsync();
-					String[] lineSplit = line.Split(getFileSeparator);
-					
-					List<String> rowData = new List<List<String>>();
-					foreach(var s in lineSplit){
-						rowData.Add(s);
+					String line;
+					while((line = reader.ReadLine()) != null{
+						String[] lineSplit = line.Split(getFileSeparator);
+						
+						List<String> rowData = new List<String>();
+						foreach(var s in lineSplit){
+							rowData.Add(s);
+						}
+						
+						data.Add(rowData);
 					}
-					
-					data.add(rowData);
 					
 				}
 				

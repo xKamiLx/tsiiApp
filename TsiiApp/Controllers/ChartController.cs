@@ -17,14 +17,14 @@ namespace TsiiApp.Controllers
 			var chartViewModel = new ChartViewModel
 			{
 				ChartName = fileName
-			}
+			};
 			
 			return new View("~/Views/Home/DisplayChart.cshtml", chartViewModel);
 			
 		}
 		
 		[HttpGet]
-		public async String GetChartDataAsJson(String fileName, char fileSeparator = ';', boolean hasFileLabels = true){
+		public String GetChartDataAsJson(String fileName, char fileSeparator = ';', boolean hasFileLabels = true){
 			
 			var chartService = new ChartService();
 			return chartService.ChartDataToJson(chartService.GetChartData(fileName, fileSeparator), hasFileLabels);
