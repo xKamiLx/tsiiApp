@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Web.Mvc;
-using System.Linq;
-using System.Web.Script.Serialization;
 using TsiiApp.ViewModels;
 using TsiiApp.Services;
 
@@ -12,23 +9,23 @@ namespace TsiiApp.Controllers
 	{
 
 		[HttpGet]
-		public ActionResult DisplayChart(String fileName){
-			
+		public ActionResult DisplayChart(String fileName)
+		{
 			var chartViewModel = new ChartViewModel
 			{
 				ChartName = fileName
 			};
-			
-			return new View("~/Views/Home/DisplayChart.cshtml", chartViewModel);
-			
+
+			return View("~/Views/Home/DisplayChart.cshtml", chartViewModel);
 		}
-		
+
 		[HttpGet]
-		public String GetChartDataAsJson(String fileName, char fileSeparator = ';', boolean hasFileLabels = true){
-			
+		public String GetChartDataAsJson(String fileName, char fileSeparator = ';', bool hasFileLabels = true)
+		{
 			var chartService = new ChartService();
-			return chartService.ChartDataToJson(chartService.GetChartData(fileName, fileSeparator), hasFileLabels);
-			
+
+			return chartService.ChartDataToJson(chartService.GetChartDataFromFile(fileName, fileSeparator), hasFileLabels);
+
 		}
 
 	}
