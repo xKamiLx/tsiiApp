@@ -75,7 +75,7 @@ namespace TsiiApp.Services
 		public List<List<String>> GetChartDataFromFile(String fileName, char getFileSeparator)
 		{
 
-			String pathToFile = GetPathToChartFolder() + fileName;
+			String pathToFile = GetPathToChartFolder() + fileName + ".csv";
 			List<List<String>> data = new List<List<String>>();
 
 			try

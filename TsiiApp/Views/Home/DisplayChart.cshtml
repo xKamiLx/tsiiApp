@@ -38,6 +38,6 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", function(e){
-		Chart.loadData('@Model.ChartName', '@Url.Action("GetChartDataAsJson", "Chart", new { fileName = "@Model.ChartName" })');
+		Chart.loadData('@Model.ChartName', '@Url.Action("GetChartDataAsJson", "Chart", new { fileName = Model.ChartName })');
 	});
 </script>
