@@ -73,10 +73,10 @@ var Chart = (function(){
 			var labelZ = $("#labelZ :selected").text();
 			
 			//Check class attr
-			var classAttrOption = $("#classAttr :selected").text();
-			var classAttr = null;
-			if(classAttrOption != "None"){
-				classAttr = classAttrOption;
+			var groupVar = null;
+			if($("#classAttrState").is(":checked")){
+				var classAttr = $("#classAttr :selected").text();
+				groupVar = chartData[fileName][classAttr];
 			}
 			
 			//Chart type
@@ -94,7 +94,7 @@ var Chart = (function(){
 				marker: {size: 12},
 				transforms: [{
 					type: "groupby",
-					groups: chartData[fileName][classAttr]
+					groups: groupVar
 				}]
 			};
 			
@@ -154,5 +154,14 @@ $("[name=chartType]").change(function(){
 	}
 	else{
 		$("#labelZ").attr("disabled", "disabled");
+	}
+});
+
+$("#classAttrState").change(function(){
+	if($(this).is(":checked")){
+		$("#classAttr").removeAttr("disabled");
+	}
+	else{
+		$("#classAttr").attr("disabled", "disabled");
 	}
 });
