@@ -48,11 +48,8 @@ var Chart = (function(){
 		$("#labelX").append("<option selected='true' disabled='disabled'>Select column</option>");
 		$("#labelY").append("<option selected='true' disabled='disabled'>Select column</option>");
 		$("#labelZ").append("<option selected='true' disabled='disabled'>Select column</option>");
-		$("#classAttr").append("<option selected='true' disabled='disabled'>Select class attribute</option>");
 		
-		$("#labelX").append("<option>None</option>");
-		$("#labelY").append("<option>None</option>");
-		$("#labelZ").append("<option>None</option>");
+		$("#classAttr").append("<option selected='true' disabled='disabled'>Select class attribute</option>");
 		$("#classAttr").append("<option>None</option>");
 		
 		for(var key in keys){
@@ -81,12 +78,19 @@ var Chart = (function(){
 			if(classAttrOption != "None"){
 				classAttr = classAttrOption;
 			}
+			
+			//Chart type
+			var chartType = "scatter";
+			if($("#labelZ").prop("selectedIndex") > 0){
+				chartType = "scatter3d";
+			}
 		
 			var trace = {
 				x: chartData[fileName][labelX],
 				y: chartData[fileName][labelY],
+				z: chartData[fileName][labelZ],
 				mode: "markers",
-				type: "scatter",
+				type: chartType,
 				marker: {size: 12},
 				transforms: [{
 					type: "groupby",
@@ -111,5 +115,44 @@ var Chart = (function(){
 })();
 
 function showGraph(fileName){
-	Chart.drawScatterChart(fileName);
+	
+	var chartType = $("[name=chartType]:checked").attr("value");
+	var state = true;
+	
+	if(chartType == "2d"){
+		if($("#labelX").prop("selectedIndex") == 0 
+			|| $("#labelY").prop("selectedIndex") == 0){
+				
+			$("#message").text("You need to specify X column and Y column");
+			state = false;
+		}
+	}
+	else{
+		if($("#labelX").prop("selectedIndex") == 0 
+			|| $("#labelY").prop("selectedIndex") == 0
+			|| $("#labelZ").prop("selectedIndex") == 0){
+			
+			$("#message").text("You need to specify X column, Y column and Z column");
+			state = false;
+		}
+	}
+	
+	if(state){
+		$("#message").css("display", "none");
+		Chart.drawScatterChart(fileName);
+	}
+	else{
+		$("#message").css("display", "block");
+	}
+
 }
+
+$("[name=chartType]").change(function(){
+	var value = ($(this).attr("value"));
+	if(value == "3d"){
+		$("#labelZ").removeAttr("disabled");
+	}
+	else{
+		$("#labelZ").attr("disabled", "disabled");
+	}
+});

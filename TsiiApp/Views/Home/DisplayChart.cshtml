@@ -6,6 +6,15 @@
 
 <div id="info" style="display:block;">Loading data from @Model.ChartName</div>
 <div id="nav" style="height: 100px; display: none;">
+
+	<div id="message" style="color: red; display: none"></div>
+	
+	<div>Use fields below to select chart type</div>
+	<div id="chart">
+		<div class="field"><input type="radio" name="chartType" value="2d" checked />2D chart</div>
+		<div class="field"><input type="radio" name="chartType" value="3d" />3D chart</div>
+	</div>
+	
 	<div>Use fields below to select attributes</div>
 	<div id="fields">
 		<div class="field">
@@ -24,7 +33,7 @@
 			</select>
 		</div>
 		<div class="field">
-			<select id="labelZ">
+			<select id="labelZ" disabled="disabled">
 				<option selected="true">Select column</option>
 			</select>
 		</div>
