@@ -221,7 +221,7 @@
     </Content>
     <Content Include="Charts\custom_chart_1.csv" />
     <Content Include="Charts\custom_chart_2.csv" />
-    <Content Include="Charts\custom_chart_example.csv" />
+    <Content Include="Charts\DefaultUser\custom_chart_example.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -304,7 +304,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57764</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
