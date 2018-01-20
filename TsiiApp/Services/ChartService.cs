@@ -9,13 +9,11 @@ namespace TsiiApp.Services
 {
 	public class ChartService
 	{
-
 		/**
 		 * Get json from chart data
 		 */
 		public String ChartDataToJson(List<List<String>> data, bool hasFileLabels)
 		{
-
 			int pos = 0;
 			int nrOfColumns = data[0].Count;
 			int nrOfRows = data.Count;
@@ -62,11 +60,9 @@ namespace TsiiApp.Services
 					}
 
 				}
-
 			}
 
 			return jsonObject.ToString();
-
 		}
 
 		/**
@@ -74,22 +70,19 @@ namespace TsiiApp.Services
 		 */
 		public List<List<String>> GetChartDataFromFile(String userName, String fileName, char getFileSeparator)
 		{
-
 			String pathToFile = GetPathToChartFolder() + userName + "\\" + fileName + ".csv";
 			List<List<String>> data = new List<List<String>>();
 
 			try
 			{
-
 				using (StreamReader reader = new StreamReader(pathToFile))
 				{
-
 					String line;
 					while ((line = reader.ReadLine()) != null)
 					{
 						String[] lineSplit = line.Split(getFileSeparator);
-
 						List<String> rowData = new List<String>();
+
 						foreach (var s in lineSplit)
 						{
 							rowData.Add(s);
@@ -104,7 +97,6 @@ namespace TsiiApp.Services
 			catch (Exception e) { }
 
 			return data;
-
 		}
 
 		/**
@@ -112,7 +104,6 @@ namespace TsiiApp.Services
 		 */
 		public HomeViewModel GetChartsFileNames()
 		{
-
 			var filenames = Directory.GetFiles(GetPathToChartFolder(), "*.*").Select(Path.GetFileNameWithoutExtension).ToList();
 			var homeViewModel = new HomeViewModel
 			{
@@ -120,7 +111,6 @@ namespace TsiiApp.Services
 			};
 
 			return homeViewModel;
-
 		}
 
 		/**

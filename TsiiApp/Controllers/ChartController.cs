@@ -7,7 +7,6 @@ namespace TsiiApp.Controllers
 {
 	public class ChartController : Controller
 	{
-
 		[HttpGet]
 		public ActionResult DisplayChart(String fileName)
 		{
@@ -23,11 +22,9 @@ namespace TsiiApp.Controllers
 		public String GetChartDataAsJson(String fileName, char fileSeparator = ';', bool hasFileLabels = true)
 		{
 			var chartService = new ChartService();
-			String userName = null;
+			string userName = User.Identity.IsAuthenticated ? User.Identity.Name : string.Empty;
 
 			return chartService.ChartDataToJson(chartService.GetChartDataFromFile(userName, fileName, fileSeparator), hasFileLabels);
-
 		}
-
 	}
 }
