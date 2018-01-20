@@ -23,8 +23,9 @@ namespace TsiiApp.Controllers
 		public String GetChartDataAsJson(String fileName, char fileSeparator = ';', bool hasFileLabels = true)
 		{
 			var chartService = new ChartService();
+			String userName = null;
 
-			return chartService.ChartDataToJson(chartService.GetChartDataFromFile(fileName, fileSeparator), hasFileLabels);
+			return chartService.ChartDataToJson(chartService.GetChartDataFromFile(userName, fileName, fileSeparator), hasFileLabels);
 
 		}
 

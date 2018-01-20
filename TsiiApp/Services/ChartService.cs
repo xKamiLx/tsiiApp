@@ -72,10 +72,10 @@ namespace TsiiApp.Services
 		/**
 		 * Get chart data from specified file
 		 */
-		public List<List<String>> GetChartDataFromFile(String fileName, char getFileSeparator)
+		public List<List<String>> GetChartDataFromFile(String userName, String fileName, char getFileSeparator)
 		{
 
-			String pathToFile = GetPathToChartFolder() + fileName + ".csv";
+			String pathToFile = GetPathToChartFolder() + userName + "\\" + fileName + ".csv";
 			List<List<String>> data = new List<List<String>>();
 
 			try
