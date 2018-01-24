@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+.fields{
+	display: flex;
+	align-items: center;
+}
+
 .field{
 	float: left;
 	margin: 10px;

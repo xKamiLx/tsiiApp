@@ -2,14 +2,14 @@
     ViewBag.Title = "Add new file";
 }
 
-<h1>Add new file</h1>
+<h1>Add New File</h1>
 
 @using (Html.BeginForm("AddNewFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
-        <label for="file">Choose the file, which You want to upload.</label>
+        <label for="file">Choose the file, which you want to upload.</label>
         <input type="file" name="file" id="file" style="margin-bottom: 10px;"/>
-        <input type="submit" class="btn" value="Upload" />
+        <input type="submit" style="width: 150px" class="btn btn-primary" value="Upload File" />
         <label> @ViewBag.Message</label>
     </div>
 }

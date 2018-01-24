@@ -9,39 +9,45 @@
 
 	<div id="message" style="color: red; display: none"></div>
 	
-	<div>Use fields below to select chart type</div>
+	<div>
+		<label>Use fields below to select chart type</label>
+	</div>
 	<div id="chart">
-		<div class="field"><input type="radio" name="chartType" value="2d" checked />2D chart</div>
-		<div class="field"><input type="radio" name="chartType" value="3d" />3D chart</div>
+		<div class="field"><input type="radio" name="chartType" value="2d" checked /> 2D chart</div>
+		<div class="field"><input type="radio" name="chartType" value="3d" /> 3D chart</div>
 	</div>
 	
-	<div style="clear: both">Use field below to select class attribute</div>
-	<div id="fields">
-		<div class="field"><input type="checkbox" id="classAttrState" />Select class attribute</div>
+	<div style="clear: both">
+		<label>Use field below to select class attribute</label>
+	</div>
+	<div class="fields">
+		<div class="field"><input type="checkbox" id="classAttrState" /> Select class attribute</div>
 		<div class="field">
-			<select id="classAttr" disabled="disabled"></select>
+			<select class="form-control" id="classAttr" disabled="disabled"></select>
 		</div>
 	</div>
 		
-	<div style="clear: both">Use fields below to select attributes</div>
-	<div id="fields">
+	<div style="clear: both">
+		<label>Use fields below to select attributes</label>
+	</div>
+	<div class="fields">
 		<div class="field">
-			<select id="labelX">
+			<select class="form-control" id="labelX">
 				<option selected="true">Select column</option>
 			</select>
 		</div>
 		<div class="field">
-			<select id="labelY">
+			<select class="form-control" id="labelY">
 				<option selected="true">Select column</option>
 			</select>
 		</div>
 		<div class="field">
-			<select id="labelZ" disabled="disabled">
+			<select class="form-control" id="labelZ" disabled="disabled">
 				<option selected="true">Select column</option>
 			</select>
 		</div>
 		<div class="field">
-			<input type="button" value="Display" onClick="showGraph('@Model.ChartName');"/>
+			<input style="width: 150px" class="btn btn-primary" type="button" value="Display" onClick="showGraph('@Model.ChartName');"/>
 		</div>
 	</div>
 </div>
