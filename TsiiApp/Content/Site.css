@@ -27,3 +27,8 @@ textarea {
 	float: left;
 	margin: 10px;
 }
+
+footer {
+	clear: both;
+	text-align: center;
+}

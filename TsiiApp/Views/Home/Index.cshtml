@@ -3,8 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 
-
-@if (Model.Filenames.Count > 0)
+@if (Model.Filenames != null && Model.Filenames.Count > 0)
 {
     <h1>List of files:</h1>
     foreach (var item in Model.Filenames)

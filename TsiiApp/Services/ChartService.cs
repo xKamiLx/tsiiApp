@@ -70,7 +70,7 @@ namespace TsiiApp.Services
 		 */
 		public List<List<String>> GetChartDataFromFile(String userName, String fileName, char getFileSeparator)
 		{
-			String pathToFile = GetPathToChartFolder() + userName + "\\" + fileName + ".csv";
+			String pathToFile = GetPathToChartFolder(userName) + fileName + ".csv";
 			List<List<String>> data = new List<List<String>>();
 
 			try
@@ -102,13 +102,16 @@ namespace TsiiApp.Services
 		/**
 		 * Get all chart's file names
 		 */
-		public HomeViewModel GetChartsFileNames()
+		public HomeViewModel GetChartsFileNames(string username)
 		{
-			var filenames = Directory.GetFiles(GetPathToChartFolder(), "*.*").Select(Path.GetFileNameWithoutExtension).ToList();
-			var homeViewModel = new HomeViewModel
+			string folderPath = GetPathToChartFolder(username);
+			var homeViewModel = new HomeViewModel();
+
+			if (Directory.Exists(folderPath))
 			{
-				Filenames = filenames
-			};
+				var filenames = Directory.GetFiles(GetPathToChartFolder(username), "*.*").Select(Path.GetFileNameWithoutExtension).ToList();
+				homeViewModel.Filenames = filenames;
+			}
 
 			return homeViewModel;
 		}
@@ -116,9 +119,9 @@ namespace TsiiApp.Services
 		/**
 		 * Get path to the folder with charts
 		 */
-		private String GetPathToChartFolder()
+		private String GetPathToChartFolder(string username)
 		{
-			return AppDomain.CurrentDomain.BaseDirectory + "Charts\\";
+			return $"{AppDomain.CurrentDomain.BaseDirectory}Charts\\{username}\\";
 		}
 	}
 }

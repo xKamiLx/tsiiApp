@@ -3,6 +3,7 @@ using System.IO;
 using System.Web.Mvc;
 using System.Web;
 using TsiiApp.Services;
+using TsiiApp.ViewModels;
 
 namespace TsiiApp.Controllers
 {
@@ -11,7 +12,7 @@ namespace TsiiApp.Controllers
         public ActionResult Index()
         {
             var service = new ChartService();
-            var homeViewModel = service.GetChartsFileNames();
+	        var homeViewModel = User.Identity.IsAuthenticated ? service.GetChartsFileNames(User.Identity.Name) : new HomeViewModel();
 
             return View(homeViewModel);
         }
